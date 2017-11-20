@@ -1,7 +1,9 @@
-package com.matheus.br.linklist;
+package com.matheus.br.linklist.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.matheus.br.linklist.R;
 
 public class MainActivity extends AppCompatActivity {
 

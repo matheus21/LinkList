@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">LinkList</string>
+    <string name="acitivty_cadastrar_link">Novo Link</string>
 </resources>
