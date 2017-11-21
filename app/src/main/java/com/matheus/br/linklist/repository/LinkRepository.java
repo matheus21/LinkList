@@ -25,7 +25,7 @@ public class LinkRepository  extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         StringBuilder query = new StringBuilder();
-        query.append("CREATE TABLE IF NOT EXISTS LINKS( ");
+        query.append("CREATE TABLE IF NOT EXISTS LINK( ");
         query.append(" ID INTEGER PRIMARY KEY AUTOINCREMENT, ");
         query.append(" URL TEXT NOT NULL, ");
         query.append(" TITULO TEXT NOT NULL, ");
