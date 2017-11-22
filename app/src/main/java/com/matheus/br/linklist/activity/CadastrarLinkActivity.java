@@ -1,11 +1,15 @@
 package com.matheus.br.linklist.activity;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.webkit.URLUtil;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -33,6 +37,13 @@ public class CadastrarLinkActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_link);
 
+        /**
+         * Metodo provisório
+         */
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                .permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         actionButtonSalvarLink = findViewById(R.id.actionButtonSalvarLink);
         editTextURL = findViewById(R.id.editTextURL);
         editTextTitulo = findViewById(R.id.editTextTitulo);
@@ -45,6 +56,8 @@ public class CadastrarLinkActivity extends AppCompatActivity {
                 adicionarLink(view);
             }
         });
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void adicionarLink(View view) {
@@ -85,6 +98,12 @@ public class CadastrarLinkActivity extends AppCompatActivity {
             valido = false;
         }
         return valido;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        startActivity(new Intent(CadastrarLinkActivity.this, MainActivity.class));
+        return true;
     }
 
 }
