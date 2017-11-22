@@ -14,17 +14,13 @@ import com.matheus.br.linklist.entity.Categoria;
 import java.util.List;
 
 
-/**
- * Created by Desenvolvimento on 16/11/2017.
- */
-
-public class CategoriasAdapter extends ArrayAdapter<Categoria> {
+public class CategoriasAdapter extends ArrayAdapter<String> {
 
 
-    private List<Categoria> categorias;
+    private List<String> categorias;
     private Context context;
 
-    public CategoriasAdapter(Context context, int resource, List<Categoria> categorias) {
+    public CategoriasAdapter(Context context, int resource, List<String> categorias) {
         super(context, resource, categorias);
         this.context = context;
         this.categorias = categorias;
@@ -50,14 +46,13 @@ public class CategoriasAdapter extends ArrayAdapter<Categoria> {
 
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View linhaCategoria = layoutInflater.inflate(R.layout.item_spinner_categoria, parent, false);
-        Categoria categoria = categorias.get(position);
         TextView textNomeCategoria = linhaCategoria.findViewById(R.id.textNomeCategoria);
-        textNomeCategoria.setText(categoria.getNome());
+        textNomeCategoria.setText(categorias.get(position));
         return linhaCategoria;
     }
 
     @Override
-    public Categoria getItem(int position) {
-        return categorias.get(position);
+    public String getItem(int position) {
+        return Categoria.getCategoria(position).getDescricao();
     }
 }

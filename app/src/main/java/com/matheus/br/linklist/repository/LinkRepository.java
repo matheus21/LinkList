@@ -10,11 +10,11 @@ import android.support.annotation.NonNull;
 import com.matheus.br.linklist.entity.Link;
 import com.matheus.br.linklist.util.Constantes;
 
-/**
- * Created by Matheus Oliveira on 02/07/2017.
- */
+import java.util.ArrayList;
+import java.util.List;
 
-public class LinkRepository  extends SQLiteOpenHelper{
+
+public class LinkRepository extends SQLiteOpenHelper {
 
 
     public LinkRepository(Context context) {
@@ -48,6 +48,17 @@ public class LinkRepository  extends SQLiteOpenHelper{
         db.close();
     }
 
+    public List<Link> getLinks() {
+
+        ArrayList<Link> links = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("LINK", null, null, null, null, null, "ID DESC");
+        while (cursor.moveToNext()) {
+            links.add(setLinkFromCursor(cursor));
+        }
+        return links;
+    }
+
     @NonNull
     private ContentValues getContentValuesLink(Link link) {
         ContentValues contentValues = new ContentValues();
@@ -58,13 +69,16 @@ public class LinkRepository  extends SQLiteOpenHelper{
         return contentValues;
     }
 
-    private void setLinkFromCursor(Cursor cursor, Link link) {
+    private Link setLinkFromCursor(Cursor cursor) {
+
+        Link link = new Link();
         link.setId(cursor.getInt(cursor.getColumnIndex("ID")));
         link.setUrl(cursor.getString(cursor.getColumnIndex("URL")));
         link.setTitulo(cursor.getString(cursor.getColumnIndex("TITULO")));
         link.setIdCategoria(cursor.getInt(cursor.getColumnIndex("ID_CATEGORIA")));
         link.setIdStatus(cursor.getInt(cursor.getColumnIndex("ID_STATUS")));
 
+        return link;
     }
 
 }

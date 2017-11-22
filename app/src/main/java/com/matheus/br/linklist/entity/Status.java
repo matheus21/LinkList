@@ -1,13 +1,12 @@
 package com.matheus.br.linklist.entity;
 
+public enum Status {
 
-public enum Categoria {
-
-    SELECIONE("Selecione uma categoria"), ARTIGO("Artigo"), NOTICIA("Noticia"), OUTROS("Outros");
+    LIDO("Lido"), NAO_LIDO("Não Lido");
 
     private String descricao;
 
-    Categoria(String descricao) {
+    Status(String descricao) {
         this.descricao = descricao;
     }
 
@@ -15,8 +14,8 @@ public enum Categoria {
         return descricao;
     }
 
-    public static Categoria getCategoria(int pos) {
-        for (Categoria c : Categoria.values()) {
+    public static Status getStatus(int pos) {
+        for (Status c : Status.values()) {
             if (c.ordinal() == pos) {
                 return c;
             }

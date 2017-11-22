@@ -1,8 +1,5 @@
 package com.matheus.br.linklist.entity;
 
-/**
- * Created by Desenvolvimento on 20/11/2017.
- */
 
 public class Link {
 
