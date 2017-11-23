@@ -48,11 +48,19 @@ public class LinkRepository extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void atualizarLink(Link link) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = getContentValuesLink(link);
+
+        db.update("LINK", contentValues, "ID = ?", new String[]{String.valueOf(link.getId())});
+    }
+
     public List<Link> getLinks() {
 
         ArrayList<Link> links = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query("LINK", null, null, null, null, null, "ID DESC");
+        Cursor cursor = db.query("LINK", null, "LINK.ID_STATUS = 1", null, null, null, "ID DESC");
         while (cursor.moveToNext()) {
             links.add(setLinkFromCursor(cursor));
         }

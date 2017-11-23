@@ -21,23 +21,38 @@
             android:id="@+id/textTituloLink"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
             android:layout_toEndOf="@+id/imageLink"
-            android:textStyle="bold"
-            android:layout_marginTop="5dp"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textDescricaoLink"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/imageLink"
-            android:layout_below="@+id/textTituloLink"/>
+            android:layout_below="@+id/textTituloLink"
+            android:layout_toEndOf="@+id/imageLink" />
 
-        <TextView
-            android:id="@+id/textUrl"
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/buttonAbrirLink"
+            style="@style/btnColored"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/textDescricaoLink"
             android:layout_toEndOf="@+id/imageLink"
-            android:layout_below="@+id/textDescricaoLink"/>
+            android:layout_toStartOf="@id/buttonMarcarComoLido"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/open_in_new"
+            />
+
+        <ImageButton
+            android:id="@+id/buttonMarcarComoLido"
+            style="@style/btnColored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textDescricaoLink"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/email_open"/>
 
     </RelativeLayout>
 

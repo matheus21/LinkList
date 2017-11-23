@@ -20,7 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="Listagem de Links" />
         <activity
             android:name=".activity.CadastrarLinkActivity"
             android:label="@string/acitivty_cadastrar_link" />
